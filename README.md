@@ -7,6 +7,6 @@ For now i've replaced google with a fake google i generated. You can change the 
 
 ### TODO's
 
- - Change the scraper to something that can parse javascipt
+ - Change the scraper to something that can parse javascipt. Eg selenium or firefox headless.
  - Add some more logging
  - Handle some errors better
