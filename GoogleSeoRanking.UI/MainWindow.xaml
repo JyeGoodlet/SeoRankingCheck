@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoogleSeoRanking.UI"
         mc:Ignorable="d"
+                xmlns:fa="http://schemas.fontawesome.io/icons/"
+
         Title="Smokeball Google Ranking" Height="450" Width="800"
         >
     <Grid>
@@ -12,21 +14,38 @@
             <Image  Margin="15,0,0,0" Height="55" HorizontalAlignment="Left" Source="/Resources/Images/logo_full_horizontal-OrangeBlack.png"  Width="228" VerticalAlignment="Center" StretchDirection="DownOnly"/>
             <Label FontSize="20" FontWeight="Bold" Foreground="white"  Height="40" Background="#1c2230" >Google Seo Ranking</Label>
             <Grid Margin="10,10,10,10">
+                <Grid.Resources >
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Margin" Value="0,0,0,4" />
+                    </Style>
+                </Grid.Resources>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" FontSize="14">Please enter your search term:</Label>
-                <TextBox Margin="5,0,0,0" FontSize="18"  Grid.Column="1"   />
+                <Grid.RowDefinitions >
+                    <RowDefinition  Height="1*"></RowDefinition>
+                    <!-- Not the best way to add a space but it works-->
+                    <RowDefinition  Height="3px"></RowDefinition> 
+
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label  FontSize="14">Please enter url to rank:</Label>
+                <TextBox Grid.Column="1" Grid.Row='0' x:Name="Searchurl" Margin="5,0,0,0" FontSize="18"    />
+                <Label Grid.Column="0" Grid.Row="2"  FontSize="14">Please enter your search term:</Label>
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="SearchTermInput" Margin="5,0,0,0" FontSize="18"   />
             </Grid>
-            <Button  Foreground="white" FontSize="14" Width="150">
+            <Button Cursor="Hand" FontSize="14" Width="150" Height="30" Name="RankingSearchButton" Click="RankingSearchButtonClickHandler" ClickMode="Press">
                 <Button.Resources>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#ed7323"/>
+                        <Setter Property="Foreground" Value="white"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <Border Background="{TemplateBinding Background}" >
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
                                 </ControlTemplate>
@@ -34,16 +53,23 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="Background" Value="#ff5630"/>
                             </Trigger>
+                            <!--<DataTrigger Binding="{Binding Text.Length, ElementName=SearchTermInput, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Background" Value="#d9d9d9"/>
+                                <Setter Property="Foreground" Value="#FF949494"/>
+                            </DataTrigger>-->
                         </Style.Triggers>
                     </Style>
-                
                     <Style TargetType="{x:Type Border}">
-
                         <Setter Property="CornerRadius" Value="7"/>
                     </Style>
-                </Button.Resources> Search Ranking</Button>
+                </Button.Resources> Search Ranking
+            </Button>
+            <Label Name="RankingResultDisplay" Visibility="Collapsed" Margin="0,30,0,0" FontSize="20" FontWeight="Bold"   Height="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >10</Label>
+
+            <fa:ImageAwesome Name="LoadingIcon" Visibility="Collapsed"  Foreground="#ed7323" Icon="Refresh" Spin="True" Height="48" Width="48" Margin="20,20,20,20" />
         </StackPanel>
 
 
