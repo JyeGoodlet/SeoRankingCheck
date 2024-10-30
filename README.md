@@ -10,3 +10,5 @@ For now i've replaced google with a fake google i generated. You can change the 
  - Change the scraper to something that can parse javascipt. Eg selenium or firefox headless.
  - Add some more logging
  - Handle some errors better
+ - Switch to MVVM pattern for WPF.
+ - Look into unit testing WPF.
