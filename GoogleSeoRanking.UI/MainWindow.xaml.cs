@@ -63,7 +63,7 @@ namespace GoogleSeoRanking.UI
 						}
 						else
 						{
-							RankingResultDisplay.Foreground = new SolidColorBrush(Colors.Yellow);
+							RankingResultDisplay.Foreground = new SolidColorBrush(Colors.Red);
 
 						}
 
@@ -83,6 +83,8 @@ namespace GoogleSeoRanking.UI
 			}
 			catch (Exception ex)
 			{
+				LoadingIcon.Visibility = Visibility.Visible;
+
 				//TODO: in production we probably would log the ex message and show a more generic error
 				MessageBox.Show(ex.Message, "Error finding ranking", MessageBoxButton.OK, MessageBoxImage.Error);
 

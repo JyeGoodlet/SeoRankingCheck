@@ -38,7 +38,7 @@ namespace GoogleSeoRanking.Scraper
 				if (result.StatusCode != HttpStatusCode.OK)
 				{
 					//This could be handled better.
-					throw new Exception($"Expection '{HttpStatusCode.OK}' but recieved '{result.StatusCode}'");
+					throw new Exception($"Expected '{HttpStatusCode.OK}' but recieved '{result.StatusCode}'");
 				}
 
 
